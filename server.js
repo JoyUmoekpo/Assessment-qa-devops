@@ -2,12 +2,17 @@ const express = require('express')
 const app = express()
 const {bots, playerRecord} = require('./data')
 const {shuffleArray} = require('./utils')
+const path = require('path')
 
 app.use(express.json())
 
+app.get('/', function(req, res) {
+    res.sendFile(path.join(__dirname, '/public/index.html'))
+})
+
 app.get('/api/robots', (req, res) => {
     try {
-        res.status(200).send(botsArr)
+        res.status(200).send(bots)
     } catch (error) {
         console.log('ERROR GETTING BOTS', error)
         res.sendStatus(400)
