@@ -1,10 +1,12 @@
 const express = require('express')
+const cors = require('cors');
 const app = express()
 const {bots, playerRecord} = require('./data')
 const {shuffleArray} = require('./utils')
 const path = require('path')
 
 app.use(express.json())
+app.use(cors())
 
 app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname, '/public/index.html'))
