@@ -25,6 +25,14 @@ app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname, '/public/index.html'))
 }) 
 
+app.get('/styles',(req,res) => {
+    res.sendFile(path.join(__dirname,'./public/styles.css'))
+})
+
+app.get('/js',(req,res) => {
+    res.sendFile(path.join(__dirname,'./public/main.js'))
+})
+
 app.get('/api/robots', (req, res) => {
     try {
         rollbar.info('Someone got the list of bots.')
