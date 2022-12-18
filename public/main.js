@@ -118,7 +118,7 @@ const putBotBack = (id) => {
 }
 
 const drawFive = () => {
-    axios.get('https://assessment-qa-devops-nuk4v011z-joyumoekpo.vercel.app/robots/five')
+    axios.get('http://54.166.148.154/api/robots/five')
         .then(res => {
             choices = res.data.choices
             compDuo = res.data.compDuo
@@ -135,7 +135,7 @@ const duel = () => {
     renderCompDuo()
     document.querySelectorAll('.bot-btn').forEach(btn => btn.classList.add('hide'))
     setTimeout(() => {
-        axios.post('https://assessment-qa-devops-nuk4v011z-joyumoekpo.vercel.app/api/duel', {compDuo, playerDuo})
+        axios.post('http://54.166.148.154/api/duel', {compDuo, playerDuo})
             .then(({data}) => {
                 resultsText.textContent = data
                 playAgainBtn.classList.remove('hide')
@@ -158,7 +158,7 @@ const reset = () => {
 }
 
 const getPlayerStats = () => {
-    axios.get('https://assessment-qa-devops-nuk4v011z-joyumoekpo.vercel.app/api/player')
+    axios.get('http://54.166.148.154/api/player')
         .then(({data: {wins, losses}}) => {
             winsText.textContent = `Wins: ${wins}`
             lossesTest.textContent = `Losses: ${losses}`
@@ -166,7 +166,7 @@ const getPlayerStats = () => {
 }
 
 const getAllBots = () => {
-    axios.get('https://assessment-qa-devops-nuk4v011z-joyumoekpo.vercel.app/api/robots')
+    axios.get('http://54.166.148.154/api/robots')
         .then(({data}) => {
             allBotsDiv.innerHTML = ''
         
