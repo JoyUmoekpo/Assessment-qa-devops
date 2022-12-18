@@ -25,8 +25,8 @@ describe('Duel Duo Test to check that ', () => {
         await driver.findElement(By.id('draw')).click()
         await driver.sleep(7000)
         await driver.findElement(By.xpath('(//button[text() = "Add to Duo"])[1]')).click()
-        const playerDivDuo = await driver.findElement(By.id('player-duo'))
-        const display = await playerDivDuo.isDisplayed()
+        const userDuo = await driver.findElement(By.id('player-duo'))
+        const display = await userDuo.isDisplayed()
         expect(display).toBeTruthy()
     })
     
