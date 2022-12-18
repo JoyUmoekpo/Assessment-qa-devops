@@ -27,15 +27,6 @@ app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname, '/public/index.html'))
 })
 
-app.get('/',(req,res) => {
-    res.sendFile(path.join(__dirname,'./public/main.js'))
-})
-
-app.get('/',(req,res) => {
-    res.sendFile(path.join(__dirname,'./public/styles.css'))
-})
-
-
 
 app.get('/api/robots', (req, res) => {
     try {
