@@ -8,6 +8,8 @@ const path = require('path')
 const {ROLLBAR_TOKEN} = process.env
 
 app.use(express.json())
+app.use(express.static('public'))
+
 app.use(cors())
 
 // include and initialize the rollbar library with your access token
@@ -23,15 +25,17 @@ rollbar.log('Hello world!')
 
 app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname, '/public/index.html'))
-}) 
+})
 
-app.get('/styles',(req,res) => {
+app.get('/',(req,res) => {
+    res.sendFile(path.join(__dirname,'./public/main.js'))
+})
+
+app.get('/',(req,res) => {
     res.sendFile(path.join(__dirname,'./public/styles.css'))
 })
 
-app.get('/js',(req,res) => {
-    res.sendFile(path.join(__dirname,'./public/main.js'))
-})
+
 
 app.get('/api/robots', (req, res) => {
     try {
