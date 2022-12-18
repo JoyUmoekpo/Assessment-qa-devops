@@ -6,7 +6,7 @@ require('chromedriver')
 const driver = new Builder().withCapabilities(Capabilities.chrome()).build()
 
 beforeEach(async () => {
-    driver.get('http://localhost:4000/')
+    driver.get('https://assessment-qa-devops-nuk4v011z-joyumoekpo.vercel.app/')
 })
 
 afterAll(async () => {
