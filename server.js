@@ -27,8 +27,10 @@ app.get('/', function(req, res) {
 
 app.get('/api/robots', (req, res) => {
     try {
+        rollbar.info('Someone got the list of bots.')
         res.status(200).send(bots)
     } catch (error) {
+        rollbar.error('There was an error getting the bots.')
         console.log('ERROR GETTING BOTS', error)
         res.sendStatus(400)
     }
@@ -48,6 +50,7 @@ app.get('/api/robots/five', (req, res) => {
 
 app.post('/api/duel', (req, res) => {
     try {
+        rollbar.info("Someone's bots is dueling a computer duo.")
         // getting the duos from the front end
         let {compDuo, playerDuo} = req.body
 
@@ -66,12 +69,15 @@ app.post('/api/duel', (req, res) => {
         // comparing the total health to determine a winner
         if (compHealthAfterAttack > playerHealthAfterAttack) {
             playerRecord.losses++
+            rollbar.critical('Someone lost!')
             res.status(200).send('You lost!')
         } else {
             playerRecord.losses++
+            rollbar.critical('Someone won!')
             res.status(200).send('You won!')
         }
     } catch (error) {
+        rollbar.error('There was an error when a player tried to duel bots.')
         console.log('ERROR DUELING', error)
         res.sendStatus(400)
     }
@@ -81,6 +87,8 @@ app.get('/api/player', (req, res) => {
     try {
         res.status(200).send(playerRecord)
     } catch (error) {
+        rollbar.error("Someone's stats did not show up.")
+        rollbar.error(error)
         console.log('ERROR GETTING PLAYER STATS', error)
         res.sendStatus(400)
     }
