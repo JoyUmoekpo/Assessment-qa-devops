@@ -7,10 +7,10 @@ describe('shuffleArray should', () => {
         let result = shuffleArray(array)
         expect(result).toHaveLength(3)
     })
-    
+
     test('returns an array', () => {
         let array = ['apple', 'pan', 'milk']
         let result = shuffleArray(array)
-        expect(typeof result).toHaveProperty('length')
+        expect(result).toHaveProperty('length')
     })
 })
